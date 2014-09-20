@@ -1,0 +1,11 @@
+import turtle
+window = turtle.Screen()
+eye = turtle.Turtle()
+eye.shape("arrow")
+eye.shape("turtle")
+eye.circle(100)
+eye.up()
+eye.goto(0,100)
+eye.down()
+eye.dot(50, "blue")
+window.exitonclick()

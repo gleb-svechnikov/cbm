@@ -1,0 +1,12 @@
+import turtle
+alex = turtle.Turtle()
+floor = turtle.Screen()
+#floor.bgcolor("orange")
+#floor.screensize(320,320)
+#floor.bgpic("grass.gif")
+alex.forward(150)
+alex.left(90)
+alex.forward(150)
+alex.left(135)
+alex.forward(212)
+#floor.exitonclick()
