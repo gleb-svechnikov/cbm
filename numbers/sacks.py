@@ -12,14 +12,13 @@ goldenAngle = (math.pi * 2) / (goldenRatio**2)
 log2 = math.log(2)
 
 
-def point(x,y,c='black'):
+def point(x,y,c='blue'):
     turtle.penup()
     turtle.setpos(x,y)
     turtle.color(c)
-    turtle.dot(3)
+    turtle.dot(4)
 
 def isPrime(n):
-    #if (isNaN(n) || !isFinite(n) || n % 1 || n < 2) return false;
     if n % 1 or n < 2:
         return False
     if n == leastFactor(n):
@@ -33,7 +32,7 @@ def leastFactor(n):
     if n % 3 == 0: return 3
     if n % 5 == 0: return 5
     m = math.sqrt(n)
-    for i in xrange(7, int(m)+1, 30):
+    for i in range(7, int(m)+1, 30):
         if n % i == 0: return i
         if n % (i + 4) == 0: return i + 4
         if n % (i + 6) == 0: return i + 6
@@ -44,7 +43,7 @@ def leastFactor(n):
         if n % (i + 24) == 0: return i + 24
     return n
 
-for i in xrange(1, endVal, 2):
+for i in range(1, endVal, 2):
     #Calculate the next coordinate
     if isPrime(i):
         r = 3 * math.sqrt(i)
