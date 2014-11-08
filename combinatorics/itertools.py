@@ -1,10 +1,7 @@
 import itertools
-a1 = [1,2,3]
-a2 = [4,5,6]
-a3 = [7,8,9]
-
-result = list(itertools.product(a1,a2,a3))
-print (result)
+#Starmap
+#x = itertools.starmap(pow, [(2,2), (3,3), (5,5), (7,7), (11,11), (13,13), (17,17)])
+#print (list(x))
 #-------------------------------------------------------------------#
 #Завтрак:
 #чай, кофе, какао, сок
