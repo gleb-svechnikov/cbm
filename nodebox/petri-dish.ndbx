@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="f8e368f2-a90c-485c-a197-d92874d43a7f">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="combine1">
+        <node name="colorize1" position="7.00,4.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#37b8db46"/>
+            <port name="stroke" type="color" value="#00002cff"/>
+            <port name="strokeWidth" type="float" value="4.0"/>
+        </node>
+        <node name="colorize2" position="1.00,6.00" prototype="corevector.colorize">
+            <port name="fill" type="color" value="#76622aff"/>
+            <port name="stroke" type="color" value="#66814aff"/>
+        </node>
+        <node name="combine1" position="5.00,8.00" prototype="list.combine"/>
+        <node name="ellipse1" position="6.00,0.00" prototype="corevector.ellipse">
+            <port name="position" type="point" value="12.00,0.00"/>
+        </node>
+        <node name="ellipse2" position="1.00,5.00" prototype="corevector.ellipse"/>
+        <node name="sample1" position="2.00,3.00" prototype="math.sample">
+            <port name="amount" type="int" value="75"/>
+            <port name="end" type="float" value="5.550000190734863"/>
+        </node>
+        <node name="scatter1" position="1.00,2.00" prototype="corevector.scatter">
+            <port name="amount" type="int" value="345"/>
+            <port name="seed" type="int" value="43"/>
+        </node>
+        <conn input="colorize1.shape" output="ellipse1"/>
+        <conn input="scatter1.shape" output="ellipse1"/>
+        <conn input="ellipse2.position" output="scatter1"/>
+        <conn input="ellipse2.height" output="sample1"/>
+        <conn input="ellipse2.width" output="sample1"/>
+        <conn input="colorize2.shape" output="ellipse2"/>
+        <conn input="combine1.list1" output="colorize2"/>
+        <conn input="combine1.list2" output="colorize1"/>
+    </node>
+</ndbx>

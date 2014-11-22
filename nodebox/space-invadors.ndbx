@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="ebe223fd-441a-4f26-be00-d5b0e1209e86">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="invador">
+        <node name="count1" position="7.00,2.00" prototype="list.count"/>
+        <node name="grid1" position="4.00,1.00" prototype="corevector.grid">
+            <port name="columns" type="int" value="3"/>
+            <port name="rows" type="int" value="4"/>
+            <port name="width" type="float" value="354.0"/>
+            <port name="position" type="point" value="5.00,0.00"/>
+        </node>
+        <node name="invador" position="3.00,6.00" prototype="core.network" renderedChild="colorize1">
+            <node name="colorize1" position="-3.00,4.00" prototype="corevector.colorize">
+                <port name="fill" type="color" value="#d5c400ff"/>
+            </node>
+            <node name="grid1" position="-3.00,-1.00" prototype="corevector.grid">
+                <port name="columns" type="int" value="47"/>
+                <port name="width" type="float" value="110.0"/>
+                <port name="height" type="float" value="70.0"/>
+            </node>
+            <node name="pick1" position="-3.00,0.00" prototype="list.pick">
+                <port name="amount" type="int" value="55"/>
+            </node>
+            <node name="rect1" position="-3.00,1.00" prototype="corevector.rect">
+                <port name="width" type="float" value="10.0"/>
+                <port name="height" type="float" value="10.0"/>
+            </node>
+            <node name="reflect1" position="-3.00,2.00" prototype="corevector.reflect">
+                <port name="angle" type="float" value="90.0"/>
+            </node>
+            <node name="translate1" position="-3.00,3.00" prototype="corevector.translate"/>
+            <port childReference="translate1.translate" description="The amount of translation." label="" name="position" range="value" type="point" value="0.00,0.00" widget="point"/>
+            <port childReference="pick1.seed" description="The random variation." label="" name="random" range="value" type="int" value="0" widget="int"/>
+            <port childReference="colorize1.fill" description="The new fill color. Set alpha to 0 for no fill." label="" name="color" range="value" type="color" value="#d5c400ff" widget="color"/>
+            <conn input="reflect1.shape" output="rect1"/>
+            <conn input="pick1.list" output="grid1"/>
+            <conn input="rect1.position" output="pick1"/>
+            <conn input="translate1.shape" output="reflect1"/>
+            <conn input="colorize1.shape" output="translate1"/>
+        </node>
+        <node name="random_numbers1" position="5.00,3.00" prototype="math.random_numbers"/>
+        <node name="random_numbers2" position="9.00,3.00" prototype="math.random_numbers">
+            <port name="end" type="float" value="255.0"/>
+        </node>
+        <node name="rgb_color1" position="7.00,5.00" prototype="color.rgb_color"/>
+        <conn input="invador.position" output="grid1"/>
+        <conn input="count1.list" output="grid1"/>
+        <conn input="random_numbers1.amount" output="count1"/>
+        <conn input="invador.random" output="random_numbers1"/>
+        <conn input="invador.color" output="rgb_color1"/>
+        <conn input="rgb_color1.green" output="random_numbers2"/>
+        <conn input="random_numbers2.amount" output="count1"/>
+        <conn input="rgb_color1.blue" output="random_numbers2"/>
+    </node>
+</ndbx>
