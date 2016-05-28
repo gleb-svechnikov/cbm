@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<ndbx formatVersion="17" type="file" uuid="5b08dcfb-79cc-4ea9-8924-448387d5870f">
+    <property name="canvasHeight" value="1000"/>
+    <property name="canvasWidth" value="1000"/>
+    <property name="canvasX" value="0"/>
+    <property name="canvasY" value="0"/>
+    <node name="root" prototype="core.network" renderedChild="translate1">
+        <node name="coordinates2" position="8.00,10.00" prototype="math.coordinates">
+            <port name="position" type="point" value="4.00,0.00"/>
+            <port name="distance" type="float" value="109.0"/>
+        </node>
+        <node name="divide1" position="9.00,4.00" prototype="math.divide">
+            <port name="value2" type="float" value="47.0"/>
+        </node>
+        <node name="frame1" position="9.00,2.00" prototype="core.frame"/>
+        <node name="multiply1" position="9.00,8.00" prototype="math.multiply">
+            <port name="value2" type="float" value="287.0"/>
+        </node>
+        <node name="rect1" position="4.00,10.00" prototype="corevector.rect">
+            <port name="position" type="point" value="0.00,11.00"/>
+            <port name="width" type="float" value="359.0"/>
+            <port name="height" type="float" value="43.0"/>
+        </node>
+        <node name="sin1" position="9.00,6.00" prototype="math.sin"/>
+        <node name="translate1" prototype="corevector.translate">
+            <port name="translate" type="point" value="10.00,0.00"/>
+        </node>
+        <conn input="multiply1.value1" output="sin1"/>
+        <conn input="divide1.value1" output="frame1"/>
+        <conn input="sin1.value" output="divide1"/>
+        <conn input="translate1.shape" output="rect1"/>
+        <conn input="coordinates2.distance" output="multiply1"/>
+        <conn input="translate1.translate" output="coordinates2"/>
+    </node>
+</ndbx>
